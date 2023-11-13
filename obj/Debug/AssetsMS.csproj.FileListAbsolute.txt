@@ -1,0 +1,16 @@
+C:\Users\Uzah01\Desktop\AssetsMS\bin\Debug\AssetsMS.exe.config
+C:\Users\Uzah01\Desktop\AssetsMS\bin\Debug\AssetsMS.exe
+C:\Users\Uzah01\Desktop\AssetsMS\bin\Debug\AssetsMS.pdb
+C:\Users\Uzah01\Desktop\AssetsMS\bin\Debug\Guna.UI2.dll
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.csproj.AssemblyReference.cache
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Form1.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Login.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Properties.Resources.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.csproj.GenerateResource.cache
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.csproj.CoreCompileInputs.cache
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.csproj.CopyComplete
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.exe
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.pdb
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Assets.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Dashboard.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Status.resources
