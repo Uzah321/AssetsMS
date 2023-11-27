@@ -14,3 +14,6 @@ C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.pdb
 C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Assets.resources
 C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Dashboard.resources
 C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Status.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Suppliers.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Signup.resources
+C:\Users\Uzah01\Desktop\AssetsMS\obj\Debug\AssetsMS.Location.resources

@@ -1,4 +1,6 @@
-﻿namespace AssetsMS
+﻿using System;
+
+namespace AssetsMS
 {
     partial class Login
     {
@@ -32,15 +34,17 @@
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.UsernameTb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.PasswordTb = new System.Windows.Forms.TextBox();
+            this.LoginBtn = new System.Windows.Forms.Button();
+            this.ResetBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.SignupLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel1
@@ -74,12 +78,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Please Login Here";
             // 
-            // textBox1
+            // UsernameTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(353, 250);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 31);
-            this.textBox1.TabIndex = 3;
+            this.UsernameTb.Location = new System.Drawing.Point(353, 250);
+            this.UsernameTb.Name = "UsernameTb";
+            this.UsernameTb.Size = new System.Drawing.Size(341, 31);
+            this.UsernameTb.TabIndex = 3;
             // 
             // label3
             // 
@@ -97,42 +101,44 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Location = new System.Drawing.Point(348, 313);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 26);
+            this.label4.Size = new System.Drawing.Size(98, 26);
             this.label4.TabIndex = 6;
-            this.label4.Text = "User Name";
+            this.label4.Text = "P@ssw0rd";
             // 
-            // textBox2
+            // PasswordTb
             // 
-            this.textBox2.Location = new System.Drawing.Point(353, 351);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(341, 31);
-            this.textBox2.TabIndex = 5;
+            this.PasswordTb.Location = new System.Drawing.Point(353, 351);
+            this.PasswordTb.Name = "PasswordTb";
+            this.PasswordTb.PasswordChar = '*';
+            this.PasswordTb.Size = new System.Drawing.Size(341, 31);
+            this.PasswordTb.TabIndex = 5;
             // 
-            // button1
+            // LoginBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(353, 430);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 45);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = false;
+            this.LoginBtn.BackColor = System.Drawing.Color.Teal;
+            this.LoginBtn.FlatAppearance.BorderSize = 0;
+            this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LoginBtn.Location = new System.Drawing.Point(353, 428);
+            this.LoginBtn.Name = "LoginBtn";
+            this.LoginBtn.Size = new System.Drawing.Size(171, 45);
+            this.LoginBtn.TabIndex = 7;
+            this.LoginBtn.Text = "Login";
+            this.LoginBtn.UseVisualStyleBackColor = false;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
-            // button2
+            // ResetBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(530, 430);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 45);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = false;
+            this.ResetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ResetBtn.FlatAppearance.BorderSize = 0;
+            this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ResetBtn.Location = new System.Drawing.Point(530, 428);
+            this.ResetBtn.Name = "ResetBtn";
+            this.ResetBtn.Size = new System.Drawing.Size(164, 45);
+            this.ResetBtn.TabIndex = 8;
+            this.ResetBtn.Text = "Reset";
+            this.ResetBtn.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -157,20 +163,43 @@
             this.guna2Elipse1.BorderRadius = 15;
             this.guna2Elipse1.TargetControl = this;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(369, 516);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(226, 26);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Don\'t have an account? \r\n";
+            // 
+            // SignupLbl
+            // 
+            this.SignupLbl.AutoSize = true;
+            this.SignupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(3)))), ((int)(((byte)(26)))), ((int)(((byte)(150)))));
+            this.SignupLbl.Location = new System.Drawing.Point(589, 516);
+            this.SignupLbl.Name = "SignupLbl";
+            this.SignupLbl.Size = new System.Drawing.Size(78, 26);
+            this.SignupLbl.TabIndex = 13;
+            this.SignupLbl.Text = "Signup.";
+            this.SignupLbl.Click += new System.EventHandler(this.SignupLbl_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1079, 731);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ResetBtn);
+            this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.PasswordTb);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UsernameTb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2CustomGradientPanel1);
@@ -180,9 +209,15 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -190,14 +225,16 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox UsernameTb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox PasswordTb;
+        private System.Windows.Forms.Button LoginBtn;
+        private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label SignupLbl;
     }
 }

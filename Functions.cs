@@ -24,12 +24,14 @@ namespace AssetsMS
             cmd.Connection = Con;
         }
 
+        public ConnectionState State { get; internal set; }
+
         public DataTable GetData(string Query)
         {
-            dt = new DataTable();
-            Sda = new SqlDataAdapter(Query, ConStr);
-            Sda.Fill(dt);
-            return dt;
+           dt = new DataTable();
+           Sda = new SqlDataAdapter(Query, ConStr);
+          // Sda.Fill(dt);
+           return dt;
         }
 
         public int SetData(string Query)

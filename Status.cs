@@ -30,7 +30,9 @@ namespace AssetsMS
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+             Suppliers Obj = new Suppliers();
+            Obj.Show();
+            this.Hide();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -52,6 +54,7 @@ namespace AssetsMS
             this.Hide();
         }
 
+
         private void AddBtn_Click(object sender, EventArgs e)
         {
             if (StatusTb.Text == "" || DescTb.Text == "")
@@ -66,7 +69,7 @@ namespace AssetsMS
                     string Desc = DescTb.Text;
 
 
-                    string Query = "insert into StatusTbl values('{0}',{1}')";
+                    string Query = "insert into StatusTbl values('{0}','{1}')";
                     Query = string.Format(Query, Name, Desc);
                     Con.SetData(Query);
                     MessageBox.Show("status Added!!!");
@@ -111,7 +114,7 @@ namespace AssetsMS
             }
 
         }
-        int Key = 0;
+        int key = 0;
         private void StatusList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             StatusTb.Text = StatusList.SelectedRows[0].Cells[1].Value.ToString();
@@ -120,11 +123,11 @@ namespace AssetsMS
 
             if (StatusTb.Text == "")
             {
-                Key = 0;
+                key = 0;
             }
             else
             {
-                Key = Convert.ToInt32(StatusList.SelectedRows[0].Cells[0].Value.ToString());
+                key = Convert.ToInt32(StatusList.SelectedRows[0].Cells[0].Value.ToString());
             }
 
 
@@ -133,7 +136,7 @@ namespace AssetsMS
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (Key == 0)
+            if (key == 0)
             {
                 MessageBox.Show("Missing Data!!!");
             }
@@ -158,6 +161,20 @@ namespace AssetsMS
                     MessageBox.Show(Ex.Message);
                 }
             }
+        }
+
+        private void StatusLbl_Click(object sender, EventArgs e)
+        {
+            Status Obj = new Status();
+            Obj.Show();
+            this.Hide();
+        }
+
+        private void LocationLbl_Click(object sender, EventArgs e)
+        {
+            Location Obj = new Location();
+            Obj.Show();
+            this.Hide();
         }
     }
 }

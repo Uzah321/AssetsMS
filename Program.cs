@@ -16,7 +16,7 @@ namespace AssetsMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Assets());
+            Application.Run(new Form1());
         }
     }
 }
