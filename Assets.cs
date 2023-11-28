@@ -84,7 +84,7 @@ namespace AssetsMS
 
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into AssetsTbl values('" + TagTb.Text + "','" + SNTb.Text + "','" + DateTb.Text + "','" + SupplierTb.Text + "','" + ModelTb.Text + "','" + ReceivedTb.Text + "','" + StatusTb.Text + "','" + ReturnedByTb.Text + "','" + Date1Tb.Text + "','" + ManagerTb.Text + "')";
+            cmd.CommandText = "insert into AssetsTbl values('" + TagTb.Text + "','" + SNTb.Text + "','" + DateTb.Text + "','" + SupplierTb.Text + "','" + ModelTb.Text + "','" + ReceivedTb.Text + "','" + StatusTb.Text + "','" + ReturnedToTb.Text + "','" + Date1Tb.Text + "','" + ManagerTb.Text + "')";
             cmd.ExecuteNonQuery();
 
             ShowAssets();
@@ -95,7 +95,7 @@ namespace AssetsMS
             ModelTb.Text = "";
             ReceivedTb.Text = "";
             StatusTb.Text = "";
-            ReturnedByTb.Text = "";
+            ReturnedToTb.Text = "";
             Date1Tb.Text = "";
             ManagerTb.Text = "";            
             
@@ -133,35 +133,46 @@ namespace AssetsMS
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
+            panel2.Visible = true;
+            int id;
+            id = Convert.ToInt32(AssetsList.SelectedCells[0].Value.ToString());
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Update into AssetsTbl values('" + TagTb.Text + "','" + SNTb.Text + "','" + DateTb.Text + "','" + SupplierTb.Text + "','" + ModelTb.Text + "','" + ReceivedTb.Text + "','" + StatusTb.Text + "','" + ReturnedByTb.Text + "','" + Date1Tb.Text + "','" + ManagerTb.Text + "')";
+            cmd.CommandText = "select * from AssetsTbl where id=" + id + "";
             cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                
 
-            ShowAssets();
-            TagTb.Text = "";
-            SNTb.Text = "";
-            DateTb.Text = "";
-            SupplierTb.Text = "";
-            ModelTb.Text = "";
-            ReceivedTb.Text = "";
-            StatusTb.Text = "";
-            ReturnedByTb.Text = "";
-            Date1Tb.Text = "";
-            ManagerTb.Text = "";
-
-
-            dg();
-            MessageBox.Show("Record inserted successfully");
-
+                TagTb.Text = dr["Atag"].ToString();
+                SNTb.Text = dr["SerialNumber"].ToString();
+                DateTb.Text = dr["PurchaseDate"].ToString();
+                SupplierTb.Text = dr["Supplier"].ToString();
+                ModelTb.Text = dr["Model/Brand"].ToString();
+                ReceivedTb.Text = dr["Received_By"].ToString();
+                StatusTb.Text = dr["AStatus"].ToString();
+                ReturnedToTb.Text = dr["Returned_To"].ToString();
+                Date1Tb.Text = dr["DeploymentDate"].ToString();
+                ManagerTb.Text = dr["ManagerName"].ToString();
+            }
 
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            
+            int id;
+            id = Convert.ToInt32(AssetsList.SelectedCells[0].Value.ToString());
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from AssetsTbl where id=" + id + "";
+            cmd.ExecuteNonQuery();
 
-            
+            dg();
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)
