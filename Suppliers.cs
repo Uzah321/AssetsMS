@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Collections;
-using Guna.UI2.WinForms.Suite;
+using System.Windows.Forms;
 
 namespace AssetsMS
 {
     public partial class Suppliers : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Uzah01\Documents\AssetsDB.mdf;Integrated Security=True;Connect Timeout=30;");
         public Suppliers()
         {
             InitializeComponent();
@@ -51,7 +44,7 @@ namespace AssetsMS
         }
         private void ShowSuppliers()
         {
-            string Query = "selecte * from SuppliersTbl";
+            string Query = "select * from SuppliersTbl";
             SuppliersList.DataSource = Con.GetData(Query);
 
 
@@ -59,36 +52,33 @@ namespace AssetsMS
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "insert into SuppliersTbl values('" + NameTb.Text + "','" + EmailTb.Text + "','" + PhoneTb.Text + "','" + DescriptionTb.Text + "')";
+            cmd.ExecuteNonQuery();
 
-            if (NameTb.Text == "" || EmailTb.Text == "" || PhoneTb.Text == "" || DescriptionTb.Text == "")
-            {
-                MessageBox.Show("Missing Data!!!");
-            }
-            else
-            {
-                try
-                {
-                    string Name = NameTb.Text;
-                    string Email = EmailTb.Text;
-                    string Phone = PhoneTb.Text;
-                    string Description = DescriptionTb.Text;
+            ShowSuppliers();
+            NameTb.Text = "";
+            EmailTb.Text = "";
+            PhoneTb.Text = "";
+            DescriptionTb.Text = "";
 
 
-                    string Query = "insert into SuppliersTbl values('{0}',{1}','{2}','{3}')";
-                    Query = string.Format(Query, Name, Email, Phone, Description);
-                    Con.SetData(Query);
-                    MessageBox.Show("status Added!!!");
-                    ShowSuppliers();
-                    NameTb.Text = "";
-                    EmailTb.Text = "";
-                    PhoneTb.Text = "";
-                    DescriptionTb.Text = "";
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message);
-                }
-            }
+            dg();
+            MessageBox.Show("Record inserted successfully");
+
+        }
+
+        public void dg()
+        {
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from SuppliersTbl";
+            cmd.ExecuteNonQuery();
+            System.Data.DataTable dt = new System.Data.DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            SuppliersList.DataSource = dt;
         }
         //int Key = 0;
         private void SuppliersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -117,68 +107,38 @@ namespace AssetsMS
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            if (NameTb.Text == "" || EmailTb.Text == "" || PhoneTb.Text == "" || DescriptionTb.Text == "")
+            panel2.Visible = true;
+            int id;
+            id = Convert.ToInt32(SuppliersList.SelectedCells[0].Value.ToString());
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from SuppliersTbl where id=" + id + "";
+            cmd.ExecuteNonQuery();
+            System.Data.DataTable dt = new System.Data.DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
             {
-                MessageBox.Show("Missing Data!!!");
-            }
-            else
-            {
-                try
-                {
-                    string Name = NameTb.Text;
-                    string Email = EmailTb.Text;
-                    string Phone = PhoneTb.Text;
-                    string Description = DescriptionTb.Text;
 
 
-                    string Query = "update SuppliersTbl set SupName = '{0}', SupEmail = '{1}', SupPhone = '{2}', SupDescription = '{3}' where SupCode = '{4}'";
-                    Query = string.Format(Query, Name, Email, Phone, Description, Key);
-                    Con.SetData(Query);
-                    MessageBox.Show("Supplier Modified!!!");
-                    ShowSuppliers();
-                    NameTb.Text = "";
-                    EmailTb.Text = "";
-                    PhoneTb.Text = "";
-                    DescriptionTb.Text = "";
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message);
-                }
+                NameTb.Text = dr["SupName"].ToString();
+                EmailTb.Text = dr["SupEmail"].ToString();
+                PhoneTb.Text = dr["SupPhone"].ToString();
+                DescriptionTb.Text = dr["SupDescription"].ToString();
+
             }
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (NameTb.Text == "" || EmailTb.Text == "" || PhoneTb.Text == "" || DescriptionTb.Text == "")
-            {
-                MessageBox.Show("Missing Data!!!");
-            }
-            else
-            {
-                try
-                {
-                    string Name = NameTb.Text;
-                    string Email = EmailTb.Text;
-                    string Phone = PhoneTb.Text;
-                    string Description = DescriptionTb.Text;
+            int id;
+            id = Convert.ToInt32(SuppliersList.SelectedCells[0].Value.ToString());
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from SuppliersTbl where id=" + id + "";
+            cmd.ExecuteNonQuery();
 
-
-                    string Query = "delete from SuppliersTbl where SupCode = '{0}'";
-                    Query = string.Format(Query, Key);
-                    Con.SetData(Query);
-                    MessageBox.Show("Supplier Deleted!!!");
-                    ShowSuppliers();
-                    NameTb.Text = "";
-                    EmailTb.Text = "";
-                    PhoneTb.Text = "";
-                    DescriptionTb.Text = "";
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message);
-                }
-            }
+            dg();
         }
 
         private void AssetsLbl_Click_1(object sender, EventArgs e)
@@ -189,7 +149,7 @@ namespace AssetsMS
         }
 
         private void DashboardLbl_Click_1(object sender, EventArgs e)
-        { 
+        {
             Dashboard Obj = new Dashboard();
             Obj.Show();
             this.Hide();
@@ -215,6 +175,16 @@ namespace AssetsMS
             Obj.Show();
             this.Hide();
         }
+
+        private void Suppliers_Load(object sender, EventArgs e)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+            dg();
+        }
     }
-    
+
 }

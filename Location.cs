@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;
 
 namespace AssetsMS
 {
     public partial class Location : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Uzah01\Documents\AssetsDB.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Uzah01\Documents\AssetsDB.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False");
+
+
         public Location()
         {
             InitializeComponent();
+            Con = new Functions();
+            ShowLocation();
         }
+        Functions Con;
+        private string connectionString;
 
         private void Location_Load(object sender, EventArgs e)
         {
@@ -27,60 +26,55 @@ namespace AssetsMS
                 con.Close();
             }
             con.Open();
-            fill_dg();
-            //display();
-        }
-
-        private void AddBtn_Click(object sender, EventArgs e)
-        {
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into LocationTbl values('" + NameTb.Text + "','" + DescTb.Text + "','" + DestTb.Text + "')";
-            cmd.ExecuteNonQuery();
-
-            NameTb.Text = "";
-            fill_dg();
-            MessageBox.Show("record inserted successfully");
+            dg();
 
         }
 
-        private void DeleteBtn_Click(object sender, EventArgs e)
+        private void ShowLocation()
         {
-            int id;
-            id = Convert.ToInt32(LocationList.SelectedCells[0].Value.ToString());
+            string Query = "select * from LocationTbl";
+            ListOfAssets.DataSource = Con.GetData(Query);
+        }
+
+
+
+        public void dg()
+        {
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from LocationTbl where id=" + id + "";
+            cmd.CommandText = "select * from LocationTbl";
             cmd.ExecuteNonQuery();
+            System.Data.DataTable dt = new System.Data.DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            ListOfAssets.DataSource = dt;
         }
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
 
-            int i = Convert.ToInt32(LocationList.SelectedCells[0].Value.ToString());
-            MessageBox.Show(i.ToString());
+            panel2.Visible = true;
+            int id;
+            id = Convert.ToInt32(ListOfAssets.SelectedCells[0].Value.ToString());
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update LocationTbl set Name ='" + NameTb.Text + "',Description='" + DescTb.Text + "',Destination='" + DestTb.Text + "'  where id=" + i + "";
+            cmd.CommandText = "select * from LocationTbl where id=" + id + "";
             cmd.ExecuteNonQuery();
-            panel2.Visible = false;
-            fill_dg();
-
-        }
-        public void fill_dg()
-        {
-
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from LocationTbl";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
-            LocationList.DataSource = dt;
+            foreach (DataRow dr in dt.Rows)
+            {
+
+
+                LocationTb.Text = dr["Name"].ToString();
+
+
+            }
+
         }
 
-      
+
 
         private void LocationLbl_Click_1(object sender, EventArgs e)
         {
@@ -118,21 +112,65 @@ namespace AssetsMS
         }
 
 
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            string searchKeyword = LocationTb.Text;
+
+            // Replace "YourTableName" and "YourColumnName" with your actual table and column names
+            string query = "SELECT * FROM AssetsTbl WHERE Returned_To LIKE @searchKeyword";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
 
 
+                        // Use parameterized query to prevent SQL injection
+                        command.Parameters.AddWithValue("@searchKeyword", "%" + searchKeyword + "%");
 
-        /* private void DeleteBtn_Click(object sender, EventArgs e)
-          {
-              int id;
-              id = Convert.ToInt32(LocationList.SelectedCells[0].Value.ToString());
-              SqlCommand cmd = con.CreateCommand();
-              cmd.CommandType = CommandType.Text;
-              cmd.CommandText = "delete from LocationTbl where id=" + id + "";
-              cmd.ExecuteNonQuery();
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            System.Data.DataTable dataTable = new System.Data.DataTable();
+                            adapter.Fill(dataTable);
 
-              //display();
-          } }*/
+                            // Display the search results in a DataGridView
+                            ListOfAssets.DataSource = dataTable;
+
+
+                            // Optionally, you can format the DataGridView or handle empty results
+                            if (dataTable.Rows.Count == 0)
+                            {
+                                MessageBox.Show("No results found.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle exception
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            int id;
+            id = Convert.ToInt32(ListOfAssets.SelectedCells[0].Value.ToString());
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from LocationTbl where id=" + id + "";
+            cmd.ExecuteNonQuery();
+
+            dg();
+        }
     }
-} 
+
+}
 
 

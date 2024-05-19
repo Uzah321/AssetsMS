@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace AssetsMS
 {
@@ -28,10 +24,10 @@ namespace AssetsMS
 
         public DataTable GetData(string Query)
         {
-           dt = new DataTable();
-           Sda = new SqlDataAdapter(Query, ConStr);
-          // Sda.Fill(dt);
-           return dt;
+            dt = new DataTable();
+            Sda = new SqlDataAdapter(Query, ConStr);
+            // Sda.Fill(dt);
+            return dt;
         }
 
         public int SetData(string Query)
@@ -54,5 +50,5 @@ namespace AssetsMS
         }
     }
 
-   
+
 }

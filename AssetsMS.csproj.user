@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\Users\Uzah01\Desktop\BAOBAB.DB\|\\DESKTOP-T8OGJ59\Users\Uzah01\Desktop\BAOBAB.DB\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>\\DESKTOP-T8OGJ59\Users\Uzah01\Desktop\BAOBAB.DB\|\\\Users\Uzah01\Desktop\BAOBAB.DB\</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory>\\DESKTOP-T8OGJ59\Users\Uzah01\Desktop\BAOBAB.DB\</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

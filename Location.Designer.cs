@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Location));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,27 +43,24 @@
             this.LocationLbl = new System.Windows.Forms.Label();
             this.DashboardLbl = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.EditBtn = new System.Windows.Forms.Button();
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.DescTb = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.NameTb = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.LocationList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.DestTb = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.maskedTextBoxArray1 = new Microsoft.VisualBasic.Compatibility.VB6.MaskedTextBoxArray(this.components);
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.SearchBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.ListOfAssets = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.DeleteBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.LocationTb = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LocationList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maskedTextBoxArray1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListOfAssets)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Aqua;
+            this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.label17);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.Transparent;
@@ -82,7 +81,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.panel2.Controls.Add(this.StatusLbl);
             this.panel2.Controls.Add(this.SuppliersLbl);
             this.panel2.Controls.Add(this.AssetsLbl);
@@ -158,148 +157,20 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 14F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label15.Location = new System.Drawing.Point(192, 167);
+            this.label15.Location = new System.Drawing.Point(116, 167);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(194, 29);
             this.label15.TabIndex = 78;
             this.label15.Text = "Manage Location";
             // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.DeleteBtn.FlatAppearance.BorderSize = 0;
-            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DeleteBtn.Location = new System.Drawing.Point(203, 647);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(164, 45);
-            this.DeleteBtn.TabIndex = 77;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = false;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // EditBtn
-            // 
-            this.EditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.EditBtn.FlatAppearance.BorderSize = 0;
-            this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.EditBtn.Location = new System.Drawing.Point(330, 571);
-            this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Size = new System.Drawing.Size(164, 45);
-            this.EditBtn.TabIndex = 76;
-            this.EditBtn.Text = "Edit";
-            this.EditBtn.UseVisualStyleBackColor = false;
-            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.BackColor = System.Drawing.Color.Teal;
-            this.AddBtn.FlatAppearance.BorderSize = 0;
-            this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AddBtn.Location = new System.Drawing.Point(96, 571);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(171, 45);
-            this.AddBtn.TabIndex = 75;
-            this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = false;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // DescTb
-            // 
-            this.DescTb.Location = new System.Drawing.Point(156, 360);
-            this.DescTb.Name = "DescTb";
-            this.DescTb.Size = new System.Drawing.Size(273, 31);
-            this.DescTb.TabIndex = 74;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(151, 319);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 26);
-            this.label6.TabIndex = 73;
-            this.label6.Text = "Location Description";
-            // 
-            // NameTb
-            // 
-            this.NameTb.Location = new System.Drawing.Point(156, 267);
-            this.NameTb.Name = "NameTb";
-            this.NameTb.Size = new System.Drawing.Size(273, 31);
-            this.NameTb.TabIndex = 72;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(151, 221);
+            this.label5.Location = new System.Drawing.Point(75, 221);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 26);
             this.label5.TabIndex = 71;
             this.label5.Text = "Location Name";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label16.Location = new System.Drawing.Point(1048, 137);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(101, 28);
-            this.label16.TabIndex = 81;
-            this.label16.Text = "Location";
-            // 
-            // LocationList
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.LocationList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LocationList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.LocationList.ColumnHeadersHeight = 4;
-            this.LocationList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LocationList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.LocationList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.LocationList.Location = new System.Drawing.Point(740, 189);
-            this.LocationList.Name = "LocationList";
-            this.LocationList.RowHeadersVisible = false;
-            this.LocationList.RowHeadersWidth = 51;
-            this.LocationList.RowTemplate.Height = 24;
-            this.LocationList.Size = new System.Drawing.Size(736, 589);
-            this.LocationList.TabIndex = 80;
-            this.LocationList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.LocationList.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.LocationList.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.LocationList.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.LocationList.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.LocationList.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.LocationList.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.LocationList.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.LocationList.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.LocationList.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationList.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.LocationList.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.LocationList.ThemeStyle.HeaderStyle.Height = 4;
-            this.LocationList.ThemeStyle.ReadOnly = false;
-            this.LocationList.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.LocationList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.LocationList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.LocationList.ThemeStyle.RowsStyle.Height = 24;
-            this.LocationList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.LocationList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // panel4
             // 
@@ -310,21 +181,130 @@
             this.panel4.Size = new System.Drawing.Size(1525, 12);
             this.panel4.TabIndex = 79;
             // 
-            // DestTb
+            // guna2ContextMenuStrip1
             // 
-            this.DestTb.Location = new System.Drawing.Point(156, 464);
-            this.DestTb.Name = "DestTb";
-            this.DestTb.Size = new System.Drawing.Size(273, 31);
-            this.DestTb.TabIndex = 83;
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // label1
+            // SearchBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(151, 422);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 26);
-            this.label1.TabIndex = 82;
-            this.label1.Text = "Destination ";
+            this.SearchBtn.Animated = true;
+            this.SearchBtn.BackColor = System.Drawing.Color.Transparent;
+            this.SearchBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SearchBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SearchBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SearchBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SearchBtn.FillColor = System.Drawing.Color.White;
+            this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SearchBtn.ForeColor = System.Drawing.Color.White;
+            this.SearchBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchBtn.Image")));
+            this.SearchBtn.ImageOffset = new System.Drawing.Point(1, 0);
+            this.SearchBtn.ImageSize = new System.Drawing.Size(50, 45);
+            this.SearchBtn.Location = new System.Drawing.Point(277, 257);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(54, 45);
+            this.SearchBtn.TabIndex = 105;
+            this.SearchBtn.UseTransparentBackground = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // ListOfAssets
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.ListOfAssets.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListOfAssets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ListOfAssets.ColumnHeadersHeight = 4;
+            this.ListOfAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListOfAssets.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ListOfAssets.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ListOfAssets.Location = new System.Drawing.Point(611, 167);
+            this.ListOfAssets.Name = "ListOfAssets";
+            this.ListOfAssets.RowHeadersVisible = false;
+            this.ListOfAssets.RowHeadersWidth = 51;
+            this.ListOfAssets.RowTemplate.Height = 24;
+            this.ListOfAssets.Size = new System.Drawing.Size(845, 589);
+            this.ListOfAssets.TabIndex = 106;
+            this.ListOfAssets.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.ListOfAssets.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.ListOfAssets.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.ListOfAssets.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.ListOfAssets.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.ListOfAssets.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.ListOfAssets.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ListOfAssets.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.ListOfAssets.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.ListOfAssets.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOfAssets.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.ListOfAssets.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.ListOfAssets.ThemeStyle.HeaderStyle.Height = 4;
+            this.ListOfAssets.ThemeStyle.ReadOnly = false;
+            this.ListOfAssets.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.ListOfAssets.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.ListOfAssets.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOfAssets.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.ListOfAssets.ThemeStyle.RowsStyle.Height = 24;
+            this.ListOfAssets.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ListOfAssets.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.DeleteBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.DeleteBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.DeleteBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.DeleteBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(149, 470);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(180, 45);
+            this.DeleteBtn.TabIndex = 107;
+            this.DeleteBtn.Text = "delete";
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // LocationTb
+            // 
+            this.LocationTb.BackColor = System.Drawing.Color.Transparent;
+            this.LocationTb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.LocationTb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LocationTb.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.LocationTb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.LocationTb.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LocationTb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.LocationTb.ItemHeight = 30;
+            this.LocationTb.Items.AddRange(new object[] {
+            "Bulawayo",
+            "Gwanda",
+            "Beitbridge",
+            "Kwekwe",
+            "Zvishavane",
+            "Hwange"});
+            this.LocationTb.Location = new System.Drawing.Point(65, 262);
+            this.LocationTb.Name = "LocationTb";
+            this.LocationTb.Size = new System.Drawing.Size(204, 36);
+            this.LocationTb.TabIndex = 108;
             // 
             // Location
             // 
@@ -332,27 +312,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1525, 805);
-            this.Controls.Add(this.DestTb);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.LocationList);
+            this.Controls.Add(this.LocationTb);
+            this.Controls.Add(this.DeleteBtn);
+            this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.EditBtn);
-            this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.DescTb);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.NameTb);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ListOfAssets);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Location";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Location";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Location_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -360,7 +334,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LocationList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maskedTextBoxArray1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListOfAssets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,18 +352,15 @@
         private System.Windows.Forms.Label StatusLbl;
         private System.Windows.Forms.Label DashboardLbl;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.Button EditBtn;
-        private System.Windows.Forms.Button AddBtn;
-        private System.Windows.Forms.TextBox DescTb;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox NameTb;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label16;
-        private Guna.UI2.WinForms.Guna2DataGridView LocationList;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox DestTb;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LocationLbl;
+        private Microsoft.VisualBasic.Compatibility.VB6.MaskedTextBoxArray maskedTextBoxArray1;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private Guna.UI2.WinForms.Guna2Button SearchBtn;
+        private Guna.UI2.WinForms.Guna2DataGridView ListOfAssets;
+        private Guna.UI2.WinForms.Guna2Button DeleteBtn;
+        private Guna.UI2.WinForms.Guna2ComboBox LocationTb;
+        //   private Guna.UI2.WinForms.Guna2Cont textMenuStrip guna2ContextMenuStrip2;
     }
 }

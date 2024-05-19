@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Web.UI.WebControls;
-using System.Deployment.Application;
+using System.Windows.Forms;
 
 namespace AssetsMS
 {
@@ -77,7 +67,7 @@ namespace AssetsMS
             string Query = "select * frpm AssetsTbl";
             AssetsList.DataSource = Con.GetData(Query);
         }
-            
+
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -97,13 +87,13 @@ namespace AssetsMS
             StatusTb.Text = "";
             ReturnedToTb.Text = "";
             Date1Tb.Text = "";
-            ManagerTb.Text = "";            
-            
+            ManagerTb.Text = "";
+
 
             dg();
             MessageBox.Show("Record inserted successfully");
 
-            
+
         }
 
 
@@ -116,7 +106,7 @@ namespace AssetsMS
 
         }
 
-       
+
 
 
         public void dg()
@@ -145,7 +135,7 @@ namespace AssetsMS
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                
+
 
                 TagTb.Text = dr["Atag"].ToString();
                 SNTb.Text = dr["SerialNumber"].ToString();
