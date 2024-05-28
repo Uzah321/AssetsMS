@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Squirrel;
 
 namespace AssetsMS
 {
@@ -17,9 +16,9 @@ namespace AssetsMS
         {
             InitializeComponent();
 
-            CheckForUpdates();
+           // CheckForUpdates();
         }
-
+        /***
         private async Task CheckForUpdates()
         {
             using (var manager = new UpdateManager(@"\Temp\Releases"))
@@ -27,7 +26,7 @@ namespace AssetsMS
                 await manager.UpdateApp(); 
             }
         }
-
+        ***/
 
         private void Login_Load(object sender, EventArgs e)
         {

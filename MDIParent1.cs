@@ -5,7 +5,11 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Data.OleDb;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Data.OleDb;
 
 
 namespace AssetsMS
@@ -42,53 +46,19 @@ namespace AssetsMS
 
         private void OpenFile(object sender, EventArgs e)
         {
-            /*****
+            
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog.Filter = "Text Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
+
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+
             {
                 string FileName = openFileDialog.FileName;
             }
-            *****/
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*"; // Change the filter to Excel files
-
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string excelFilePath = openFileDialog.FileName;
-
-                // Load Excel file using EPPlus
-                using (ExcelPackage package = new ExcelPackage(new FileInfo(excelFilePath)))
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // Assuming you want the first worksheet
-
-                    // Create a DataTable to hold the Excel data
-                    System.Data.DataTable dt = new System.Data.DataTable();
-
-                    // Iterate through the Excel worksheet and populate the DataTable
-                    foreach (var firstRowCell in worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column])
-                    {
-                        dt.Columns.Add(firstRowCell.Text);
-                    }
-
-                    for (int rowNum = 2; rowNum <= worksheet.Dimension.End.Row; rowNum++)
-                    {
-                        var wsRow = worksheet.Cells[rowNum, 1, rowNum, worksheet.Dimension.End.Column];
-                        DataRow row = dt.Rows.Add();
-                        foreach (var cell in wsRow)
-                        {
-                            row[cell.Start.Column - 1] = cell.Text;
-                        }
-                    }
-
-                    // Set the DataTable as the DataSource for your DataGridView
-                    ListOfAssets.DataSource = dt;
-                }
-            }
+            
         }
-
+       
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -185,6 +155,8 @@ namespace AssetsMS
         private object printDocument1;
         private object printPreviewDialog1;
 
+        public object OleDbSchemaGroup { get; private set; }
+
         private void SearchBtn_Click(object sender, EventArgs e)
         {
 
@@ -245,6 +217,56 @@ namespace AssetsMS
 
 
         }
+        /*****
+        private void importFromExcelBtn_Click(object sender, EventArgs e)
+        {
+
+            // OpenFileDialog to select the Excel file
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select Excel File";
+            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                // Create a DataTable to hold the imported data
+                DataTable dataTable = new DataTable();
+
+                // Connection string for Excel files (adjust based on your Excel version)
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1'"; // Adjust for Excel version
+                string sheetName;
+                try
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        // Get information about tables (worksheets)
+                        DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGroup.Tables, null);
+
+                        if (schemaTable.Rows.Count > 0)
+                        {
+                            sheetName = schemaTable.Rows[0]["TABLE_NAME"].ToString();
+                        }
+                        else
+                        {
+                            // Handle the case of no tables (worksheets)
+                            MessageBox.Show("The Excel file does not contain any worksheets.");
+                            return; // Or take other appropriate action
+                        }
+
+                        // ... rest of your code for retrieving data from the sheet
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle connection or other errors
+                    MessageBox.Show("Error getting sheet name: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        *****/
     }
 
 }

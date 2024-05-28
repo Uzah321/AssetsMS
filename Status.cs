@@ -148,5 +148,12 @@ namespace AssetsMS
             con.Open();
             dg();
         }
+
+        private void CreateInvoice_Click(object sender, EventArgs e)
+        {
+            Form2 Obj = new Form2();
+            Obj.Show();
+            this.Hide();
+        }
     }
 }

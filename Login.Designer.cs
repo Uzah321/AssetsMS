@@ -41,10 +41,10 @@ namespace AssetsMS
             this.SignupLbl = new System.Windows.Forms.Label();
             this.maskedTextBoxArray1 = new Microsoft.VisualBasic.Compatibility.VB6.MaskedTextBoxArray(this.components);
             this.maskedTextBoxArray2 = new Microsoft.VisualBasic.Compatibility.VB6.MaskedTextBoxArray(this.components);
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.UsernameTb = new Guna.UI2.WinForms.Guna2TextBox();
             this.PasswordTb = new Guna.UI2.WinForms.Guna2TextBox();
             this.LoginBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.maskedTextBoxArray1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maskedTextBoxArray2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
@@ -118,21 +118,6 @@ namespace AssetsMS
             this.SignupLbl.Text = "Signup.";
             this.SignupLbl.Click += new System.EventHandler(this.SignupLbl_Click);
             // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(26, 129);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(887, 549);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2CirclePictureBox1.TabIndex = 14;
-            this.guna2CirclePictureBox1.TabStop = false;
-            this.guna2CirclePictureBox1.UseTransparentBackground = true;
-            this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
-            // 
             // UsernameTb
             // 
             this.UsernameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -190,6 +175,21 @@ namespace AssetsMS
             this.LoginBtn.TabIndex = 17;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click_1);
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(23, 131);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(887, 549);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.TabIndex = 14;
+            this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.UseTransparentBackground = true;
+            this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
             // 
             // Login
             // 

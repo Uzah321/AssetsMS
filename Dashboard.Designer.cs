@@ -315,7 +315,7 @@
             this.ExcelBtn.Size = new System.Drawing.Size(180, 45);
             this.ExcelBtn.TabIndex = 88;
             this.ExcelBtn.Text = "import from Excel";
-            this.ExcelBtn.Click += new System.EventHandler(this.ExcelBtn_Click);
+            //this.ExcelBtn.Click += new System.EventHandler(this.ExcelBtn_Click);
             // 
             // assetsDBDataSet
             // 

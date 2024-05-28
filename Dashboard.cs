@@ -1,9 +1,13 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using SharpCompress.Common;
+using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using EPPlus7 = EPPlus;
 
 
 namespace AssetsMS
@@ -61,46 +65,87 @@ namespace AssetsMS
             memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 43, 1000, s);
         }
 
-        private void ExcelBtn_Click(object sender, EventArgs e)
+        private void ExcelBtn_Click(string fpath, object sender, EventArgs e)
         {
-            var frmDialog = new System.Windows.Forms.OpenFileDialog();
-            if (frmDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+
+            OpenFileDialog dilg = new OpenFileDialog();
+            dilg.Filter = "Excel Sheet(*.xlsx)|*.xlsx|All Files(*.*)|*.*";
+            if (dilg.ShowDialog() == DialogResult.OK)
             {
-                string constr = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES""", frmDialog.FileName);
-                OleDbConnection myConnection = new OleDbConnection(constr);
-                myConnection.Open();
-                DataTable spreadSheetData = myConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                string sheetName = "";
-                DataTable dt;
-                OleDbCommand onlineConnection;
-                OleDbDataAdapter theDataAdapter;
+                string filepath = dilg.FileName;
+                SearchTb.Text = filepath;
+                LoadDataFromExcelToDataGridView(filepath, ".xlsx", "yes");
 
-                foreach (DataRow dr in spreadSheetData.Rows)
+
+
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files (*.xlsx; *.xlsm; *.xls)|*.xlsx; *.xlsm; *.xls";
+                openFileDialog.Title = "Select Excel File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    sheetName = dr["TABLE_NAME"].ToString();
-                    sheetName = sheetName.Replace("'", "");
-                    if (sheetName.EndsWith("$"))
-                    {
-                        onlineConnection = new OleDbCommand("SELECT * FROM [" + sheetName + "]", myConnection);
-                        theDataAdapter = new OleDbDataAdapter(onlineConnection);
-                        dt = new DataTable();
-                        dt.TableName = sheetName;
-                        theDataAdapter.Fill(dt);
-                        ds.Tables.Add(dt);
-                    }
+                    //filePath = openFileDialog.FileName;
+                    //SearchTb.Text = filePath; // Update textbox (optional)
                 }
-                myConnection.Close();
-                ListOfAssets.DataSource = ds.Tables[0];
-                setLabe2();
+                /*****
+                if (string.IsNullOrEmpty(fpath))
+                {
+                    MessageBox.Show("Please select an Excel file to import.");
 
+                }
+
+                DataTable dataTable = new DataTable();
+
+                try
+                {
+                    // Use third-party libraries like EPPlus for reading Excel files
+                    using (var package = ExcelPackage.Load("path/to/your/file.xlsx"))
+                    {
+                        // Get the first worksheet (modify for specific sheet selection)
+                        var worksheet = package.Workbook.Worksheets.First();
+
+                        // Build a DataTable based on worksheet data
+                        dataTable = LoadDataFromExcelToDataGridView(worksheet);
+                    }
+
+                    // Bind the data table to your DataGridView or other control
+                    ListOfAssets.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error importing data: " + ex.Message);
+                }
+                *****/
             }
+           
         }
 
-        private void setLabe2()
+        private void LoadDataFromExcelToDataGridView(string fpath, string ext, string hdr)
+        {
+            if (fpath is null)
+            {
+                throw new ArgumentNullException(nameof(fpath));
+            }
+
+            string con = "Provider=Microisoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+            con = String.Format(con, fpath, hdr);
+            OleDbConnection excelcon = new OleDbConnection(con);
+            excelcon.Open();
+            DataTable exceldata = excelcon.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            string exsheetname = exceldata.Rows[0]["TABLE_NAME"].ToString();
+            OleDbCommand com = new OleDbCommand("Select * from [" + exsheetname + "]", excelcon);
+            OleDbDataAdapter oda = new OleDbDataAdapter(com);
+            DataTable dt = new DataTable();
+            oda.Fill(dt);
+            excelcon.Close();
+            ListOfAssets.DataSource = dt;
+        }
+        private void Format(string con, string fpath, string hdr)
         {
             //throw new NotImplementedException();
         }
-
 
         private void AssetsBtn_Click_1(object sender, EventArgs e)
         {
@@ -114,6 +159,20 @@ namespace AssetsMS
             da.Fill(dt);
             ListOfAssets.DataSource = dt;
 
+        }
+
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Excel Files (*.xlsx; *.xlsm; *.xls)|*.xlsx; *.xlsm; *.xls";
+            openFileDialog.Title = "Select Excel File";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //filePath = openFileDialog.FileName;
+                // txtFilePath.Text = filePath; // Update textbox (optional)
+            }
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)
