@@ -26,7 +26,12 @@ namespace AssetsMS
         {
             Invoice Obj = new Invoice();
             //Obj.AssetDescriptionTb = AssetDescriptionTb.Text;
-            Obj.Date = DateTime.Now.ToString(); ;
+            
+            //Obj.Date = DateTime.Now.ToString();
+            if (Obj.date != null)
+                Obj.date = "";
+            else
+                Obj.date = date.Text;
             if (Obj.AssetDescriptionTb != null)
                 Obj.AssetDescriptionTb = "";
             else

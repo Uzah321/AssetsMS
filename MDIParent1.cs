@@ -46,19 +46,74 @@ namespace AssetsMS
 
         private void OpenFile(object sender, EventArgs e)
         {
-            
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
+            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-
             {
-                string FileName = openFileDialog.FileName;
+                string fileName = openFileDialog.FileName;
+
+                // Use OleDbConnection for Excel 2007 or earlier (.xls) files
+                // Use Office.Interop.Excel for Excel 2010 or later (.xlsx) files
+                // Choose the appropriate method based on your Excel file format
+
+                // **Method 1: Using OleDbConnection (for .xls files)**
+                DataTable dataTable = ReadExcelFileUsingOleDb(fileName);
+                if (dataTable != null)
+                {
+                    ListOfAssets.DataSource = dataTable;  // Bind data to DataGridView
+                }
+                else
+                {
+                    // Handle error if data cannot be read from the file
+                    MessageBox.Show("Error reading Excel file.");
+                }
+
+                // **Method 2: Using Office.Interop.Excel (for .xlsx files)**
+                // You'll need to add a reference to the Microsoft.Office.Interop.Excel assembly
+                // dataTable = ReadExcelFileUsingOfficeInterop(fileName);
+                // ... (similar binding logic as in Method 1)
             }
-            
         }
-       
+
+        // Method to read Excel data using OleDbConnection (for .xls files)
+        private DataTable ReadExcelFileUsingOleDb(string fileName)
+        {
+            string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={fileName};Extended Properties=Excel 8.0;";
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+                    string sheetName = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null).Rows[0]["TABLE_NAME"].ToString();
+
+                    string query = $"SELECT * FROM [{sheetName}]";
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading Excel file: " + ex.Message);
+                return null;
+            }
+
+            return dataTable;
+        }
+        /**
+        // Method to read Excel data using Office.Interop.Excel (for .xlsx files) - Implement if needed
+        private DataTable ReadExcelFileUsingOfficeInterop(string fileName)
+        {
+            // Implement logic using Office.Interop.Excel library
+            // ...
+        }
+
+        **/
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();

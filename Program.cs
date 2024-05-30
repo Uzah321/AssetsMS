@@ -13,7 +13,7 @@ namespace AssetsMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Status());
+            Application.Run(new Login());
         }
     }
 }

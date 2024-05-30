@@ -65,13 +65,13 @@ namespace AssetsMS
             // 
             this.NAME.AutoSize = true;
             this.NAME.BackColor = System.Drawing.Color.White;
-            this.NAME.Font = new System.Drawing.Font("Trebuchet MS", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NAME.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NAME.ForeColor = System.Drawing.Color.DarkCyan;
-            this.NAME.Location = new System.Drawing.Point(361, 13);
+            this.NAME.Location = new System.Drawing.Point(364, 13);
             this.NAME.Name = "NAME";
-            this.NAME.Size = new System.Drawing.Size(197, 42);
+            this.NAME.Size = new System.Drawing.Size(284, 51);
             this.NAME.TabIndex = 1;
-            this.NAME.Text = "BAOBAD.DB";
+            this.NAME.Text = "ATLAS LITE";
             // 
             // panel1
             // 
